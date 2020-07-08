@@ -2,11 +2,11 @@
 #include <string.h>
 #include <Windows.h>
 
-void frequency_count(int *alphabetlist, char *ciphertext); // ¾ËÆÄºª Ä«¿îÆÃ 
-void print_alphabet_list(int *alphabetlist); // Ä«¿îÆÃµÈ ¾ËÆÄºª Ãâ·Â 
-void change_text(char findalphabet, char changealphabet, char *text); //¿ø·¡ ¹®ÀåÀÇ ¾ËÆÄºªÀ» º¯°æ ÇÏ´Â ÇÔ¼ö 
-void print_text(char *text);   //¾ÏÈ£¹® Ãâ·ÂÇÔ¼ö mainÇÔ¼ö char ciphertext[] ¹è¿­ Ãâ·Â
-void print_change_list(char *changelist); //¹Ù²ï °á°ú°ª ´Ù½ÃÃâ·Â 
+void frequency_count(int *alphabetlist, char *ciphertext); // ì•ŒíŒŒë²³ ì¹´ìš´íŒ… 
+void print_alphabet_list(int *alphabetlist); // ì¹´ìš´íŒ…ëœ ì•ŒíŒŒë²³ ì¶œë ¥ 
+void change_text(char findalphabet, char changealphabet, char *text); //ì›ë˜ ë¬¸ì¥ì˜ ì•ŒíŒŒë²³ì„ ë³€ê²½ í•˜ëŠ” í•¨ìˆ˜ 
+void print_text(char *text);   //ì•”í˜¸ë¬¸ ì¶œë ¥í•¨ìˆ˜ mainí•¨ìˆ˜ char ciphertext[] ë°°ì—´ ì¶œë ¥
+void print_change_list(char *changelist); //ì–´ë–¤ ì•ŒíŒŒë²³ì„ ë°”ê¿¨ëŠ”ì§€ í˜„ì¬ì§„í–‰ìƒí™© ì¶œë ¥ 
 
 int main()
 {
@@ -15,38 +15,38 @@ int main()
 						 "TVWJCZAAXZBCSSCJXBQCJZCOJZCNSPOXBXSBTVWJC\n\n"
 						 "JZDXGXXMOZQMSCSCJXBOVQXCJZMOJZCNSPJZHGXXMOSPLH\n\n"
 						 "JZDXZAAXZBXHCSCJXTCSGXSCJXBOVQX\n\n"
-	}; //¾ÏÈ£¹® 
+	}; //ì•”í˜¸ë¬¸ 
 
 	char changelist[26] = { 0 };
 
 	/*
-		 ÃÊ±âÈ­¸¦ À§ÇØ ÇÑ¹ø¾¿ Ãâ·Â do whileÀ» ½á¾ß ÇÏ³ª °í¹Î‰çÀ¸³ª ....
-		 do whileÀº ÁöÀúºĞÇØ¼­ º¸±â½ÈÀ½  
-		 ¾îÂ÷ÇÇ ³»ºÎ ·ÎÁ÷»óÀ¸·Î´Â Å«Â÷ÀÌ¾øÀ½ 
+		 ì´ˆê¸°í™”ë¥¼ ìœ„í•´ í•œë²ˆì”© ì¶œë ¥ do whileì„ ì¨ì•¼ í•˜ë‚˜ ê³ ë¯¼Â‰ç‘›ë¦½ ....
+		 do whileì€ ì§€ì €ë¶„í•´ì„œ ë³´ê¸°ì‹«ìŒ  
+		 ì–´ì°¨í”¼ ë‚´ë¶€ ë¡œì§ìƒìœ¼ë¡œëŠ” í°ì°¨ì´ì—†ìŒ 
 	*/
-	print_text(ciphertext); //¾ÏÈ£¹® Ãâ·Â char ciphertext[]
-	frequency_count(alphabetlist, ciphertext); //°¢ ¾ËÆÄºªº° °³¼ö Ä«¿îÆÃ 
-	print_alphabet_list(alphabetlist); // ¾ËÆÄºª Ä«¿îÆÃ °á°ú Ãâ·Â 
-	print_change_list(changelist); // ¹Ù²ï°á°ú Ãâ·Â (³»°¡ ÇöÀç ¾î¶²°É ±³Ã¤Çß´ÂÁö¸¦ ¾Ë±âÀ§ÇÔ) 
+	print_text(ciphertext); //ì•”í˜¸ë¬¸ ì¶œë ¥ char ciphertext[]
+	frequency_count(alphabetlist, ciphertext); //ê° ì•ŒíŒŒë²³ë³„ ê°œìˆ˜ ì¹´ìš´íŒ… 
+	print_alphabet_list(alphabetlist); // ì•ŒíŒŒë²³ ì¹´ìš´íŒ… ê²°ê³¼ ì¶œë ¥ 
+	print_change_list(changelist); // ë°”ë€ê²°ê³¼ ì¶œë ¥ (ë‚´ê°€ í˜„ì¬ ì–´ë–¤ê±¸ êµì±„í–ˆëŠ”ì§€ë¥¼ ì•Œê¸°ìœ„í•¨) 
 
 
 	while (1)
 	{
-		printf("º¯°æÇÏ½Ç ¾ËÆÄºªÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä >> ");
+		printf("ë³€ê²½í•˜ì‹¤ ì•ŒíŒŒë²³ì„ ì…ë ¥í•´ì£¼ì„¸ìš” >> ");
 		char findalphabet = getchar();
 
-		while (getchar() != '\n'); //¹öÆÛ Ã»¼ÒÇØÁÖ±â 
+		while (getchar() != '\n'); //ë²„í¼ ì²­ì†Œí•´ì£¼ê¸° 
 
 		if (findalphabet == '.')
 		{
 			break;
 		}
 
-		printf("¾î¶² ¾ËÆÄºªÀ¸·Î º¯°æÇÏ½Ã°Ú½À´Ï±î? >> ");
+		printf("ì–´ë–¤ ì•ŒíŒŒë²³ìœ¼ë¡œ ë³€ê²½í•˜ì‹œê² ìŠµë‹ˆê¹Œ? >> ");
 		char changealphabet = getchar(); 
-		system("cls"); //È­¸éÁö¿ì±â 
+		system("cls"); //í™”ë©´ì§€ìš°ê¸° 
 
-		while (getchar() != '\n'); //¹öÆÛ Ã»¼ÒÇØÁÖ±â 
+		while (getchar() != '\n'); //ë²„í¼ ì²­ì†Œí•´ì£¼ê¸° 
 
 		changelist[findalphabet - 65] = changealphabet; 
 		/* 
@@ -54,14 +54,14 @@ int main()
 			b - 65 = 1
 			...
 			
-			ÇÔÀ¸·Î Á»´õ ÀÛ¾÷·®À» ÁÙÀÏ¼öÀÖÀ½ 
+			í•¨ìœ¼ë¡œ ì¢€ë” ì‘ì—…ëŸ‰ì„ ì¤„ì¼ìˆ˜ìˆìŒ 
 		*/
 		printf("\n");
 
-		print_alphabet_list(alphabetlist); //¾ÏÈ£¹® Ãâ·Â char ciphertext[]
-		print_change_list(changelist); //°¢ ¾ËÆÄºªº° °³¼ö Ä«¿îÆÃ
-		change_text(findalphabet, changealphabet, ciphertext); // ¾ËÆÄºª Ä«¿îÆÃ °á°ú Ãâ·Â 
-		print_text(ciphertext);// ¹Ù²ï°á°ú Ãâ·Â (³»°¡ ÇöÀç ¾î¶²°É ±³Ã¤Çß´ÂÁö¸¦ ¾Ë±âÀ§ÇÔ) 
+		print_alphabet_list(alphabetlist); //ì•”í˜¸ë¬¸ ì¶œë ¥ char ciphertext[]
+		print_change_list(changelist); //ê° ì•ŒíŒŒë²³ë³„ ê°œìˆ˜ ì¹´ìš´íŒ…
+		change_text(findalphabet, changealphabet, ciphertext); // ì•ŒíŒŒë²³ ì¹´ìš´íŒ… ê²°ê³¼ ì¶œë ¥ 
+		print_text(ciphertext);// ë°”ë€ê²°ê³¼ ì¶œë ¥ (ë‚´ê°€ í˜„ì¬ ì–´ë–¤ê±¸ êµì±„í–ˆëŠ”ì§€ë¥¼ ì•Œê¸°ìœ„í•¨) 
 
 	}
 
@@ -96,7 +96,7 @@ void print_alphabet_list(int *alphabetlist)
 }
 
 
-void print_text(char *text) // ·¹Æ÷Æ®°úÁ¦ ~!!! ¾ÏÈ£¹® Ãâ·Â ÇÔ¼ö 
+void print_text(char *text) // ë ˆí¬íŠ¸ê³¼ì œ ~!!! ì•”í˜¸ë¬¸ ì¶œë ¥ í•¨ìˆ˜ 
 {
 	printf("%s\n\n", text);
 }
