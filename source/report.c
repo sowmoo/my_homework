@@ -58,16 +58,16 @@ int main()
 		*/
 		printf("\n");
 
-		print_alphabet_list(alphabetlist); //암호문 출력 char ciphertext[]
-		print_change_list(changelist); //각 알파벳별 개수 카운팅
-		change_text(findalphabet, changealphabet, ciphertext); // 알파벳 카운팅 결과 출력 
-		print_text(ciphertext);// 바뀐결과 출력 (내가 현재 어떤걸 교채했는지를 알기위함) 
+		print_alphabet_list(alphabetlist); //알파벳 카운팅 개수 출력  
+		print_change_list(changelist); //알파벳 바뀐내용 출력 (현재 내가 진행한 것)
+		change_text(findalphabet, changealphabet, ciphertext); // 알파벳 바꾸기 
+		print_text(ciphertext);// 현재 암호문 출력 (내가 현재 어떤걸 교채했는지를 알기위함) 
 
 	}
 
 }
 
-void frequency_count(int *alphabetlist, char *ciphertext)
+void frequency_count(int *alphabetlist, char *ciphertext) //각 알파벳별 개수 카운팅
 {
 	int len = strlen(ciphertext);
 	for (int i = 0; i < len; i++)
@@ -80,7 +80,7 @@ void frequency_count(int *alphabetlist, char *ciphertext)
 }
 
 
-void print_alphabet_list(int *alphabetlist)
+void print_alphabet_list(int *alphabetlist) // 알파벳 카운팅 결과 출력 
 {
 	for (int i = 0; i < 26; i++)
 	{
@@ -101,7 +101,7 @@ void print_text(char *text) // 레포트과제 ~!!! 암호문 출력 함수
 	printf("%s\n\n", text);
 }
 
-void change_text(char findalphabet, char changealphabet, char *text)
+void change_text(char findalphabet, char changealphabet, char *text) //알파벳 교체하기
 {
 	int len = strlen(text);
 
@@ -114,7 +114,7 @@ void change_text(char findalphabet, char changealphabet, char *text)
 	}
 }
 
-void print_change_list(char *changelist)
+void print_change_list(char *changelist) // 현재 교체한 알파벳 출력  (내가 현재 어떤걸 교채했는지를 알기위함)
 {
 	for (int i = 0; i < 26; i++)
 	{
