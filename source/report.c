@@ -37,7 +37,7 @@ int main()
 
 		while (getchar() != '\n'); //버퍼 청소해주기 
 
-		if (findalphabet == '.')
+		if (findalphabet == '.') //종료조건 
 		{
 			break;
 		}
